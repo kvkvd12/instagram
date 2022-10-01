@@ -33,7 +33,11 @@
       padding-top: 75px;
       background-color: #FAFAFA;
   }
-  
+
+  .icons a{
+    text-decoration: none;
+    color: #000;
+  }
   .left_body {
       
       margin-right: 100px;
@@ -247,13 +251,21 @@
   <!-- 상단 내비게이션 바 -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%; height: 50px; position: fixed;" >
     <div class="container">
-      <img style="height: 30px; object-fit: contain"  
-      src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
+      <a href="/home">
+        <img style="height: 30px; object-fit: contain"  
+        src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
+      </a>
+      
       <!-- <input class="form-control" style="width: 200px" type="search" placeholder="Search" aria-label="Search"> -->
-      <div>
-        <span class="material-icons">home</span>
-        <span id="add_feed" class="material-icons-outlined">add_box</span>
-        <i class="fa-solid fa-arrow-right-from-bracket" ></i>      
+      <div class="icons">
+        <a href="/home">
+          <span class="material-icons">home</span>
+        </a>
+        <a href="/postadd/">
+          <span id="add_feed" class="material-icons-outlined">add_box</span>
+        </a>
+        
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>      
       </div>
     </div>
   </nav>
