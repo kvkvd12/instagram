@@ -8,62 +8,72 @@
 
 <style>
     .detail_main_body {
+        
         display: flex;
         justify-content: center;
-        background-color: #FAFAFA;
+        
     }
 
     .detail_left_body {
-        padding-top: 20px;
-        width: 700px;
-        height: 2000px;
+        
+        margin-left: 5%;
+        padding-top: 70px;
+        width: 600px;
+        height: 1000px;
         display: flex;
         flex-direction: column;
     }
 
     .detail_right_body {
-        padding-top: 20px;
-        width: 350px;
+        margin-left: 1px;
+        padding-top: 70px;
+        width: 400px;
         height: 1000px;
-        margin-right: 200px;
-        left: 72%;
+        left: 57%;
+        right: 2%;
+        flex-direction: column; 
     }
 
-    .feed_detail {
-        margin-top: 20px;
-    }
-
+    
+    
     .detail_feed_box_left {
-        background-color: white;
-        width: 700px;
-        margin: 20px 0px 20px 0px;
-        height: 480px;
-        padding: 10px 0px 20px 0px;
+        width: 600px;
+        height: 520px;
     }
 
     .detail_feed_box_right {
-        background-color: white;
-        width: 600px;
+        width: 400px;
         height: 520px;
-        padding-top: 10px;
     }
 
     .detail_feed_img {
-        width: 100%;
-        object-fit: contain;
+        padding-top: 50px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; 
+    }
+
+
+
+    
+    .feed_detail {
+        padding-top: 1px;
+        
     }
 
     .detail_feed_content {
         padding: 10px;
-        height: 70px;
+        
     }
 
     .detail_feed_txt {
-        font-size: 13px;
+        font-size: 14px;
+        padding: 10px;
     }
 
     .detail_feed_name {
         padding-left: 10px;
+        padding-top: 10px;
         display: flex;
         align-items: center;
     }
@@ -73,6 +83,8 @@
         padding: 0px 10px;
         font-weight: bold;
     }
+
+
 
     .detail_profile_box {
         width: 35px;
@@ -89,13 +101,13 @@
 
 
     .detail_name_content {
-        width: 500px;
-        display: flex;
+        
+        width: 290px;
         flex-direction: column;
     }
 
     .comment_list{
-        
+        padding-left: 10px;
         max-height: 240px;
         overflow-y: auto;
     }
@@ -105,19 +117,21 @@
     }
 
     .comment_box {
+        
         color: lightgray;
         display: flex;
         flex-direction: column;
-        margin:5px 5px 0px 0px;
+        margin:5px 10px 0px 0px;
     }
 
     .comment_profile {
+        padding-left: 5px;
         display: flex;
         align-items: center;
     }
 
     .comment_img {
-        padding: 0px 5px 15px 5px;
+        padding: 0px 10px 15px 5px;
     }
 
     .comment_txt {
@@ -131,13 +145,15 @@
     <div class="detail_left_body">
         <div class="border detail_feed_box">
             <div class="detail_feed_box_left">
-                <img class="detail_feed_img "
+                <img class="detail_feed_img"
                     src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg">
-
             </div>
         </div>
     </div>
-    <!-- 상세 오른쪽 -->
+
+
+
+       <!-- 상세 오른쪽 -->
     <div class="detail_right_body">
         <div class="border detail_feed_box_right">
             <div class="detail_feed_name" style="justify-content: space-between">
@@ -151,13 +167,20 @@
                     </div>
                     {% if tweet.author == user %}
                     <div style="float: right">
+                        <a href="/tweet/edit/{{ tweet.id }}">
+                            <span class="material-symbols-outlined">edit_square</span>
+                        </a>
+                    </div>
+                    <div>
                         <a href="/tweet/delete/{{ tweet.id }}">
-                            <span class="badge bg-danger">삭제</span>
+                            <span class="material-symbols-outlined">delete</span>
                         </a>
                     </div>
                     {% endif %}
                 </div>
             </div>
+
+
             <hr style="border: 1px solid silver;">
             <div class="feed_detail">
                 <div class="detail_feed_name">
@@ -171,30 +194,28 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="detail_feed_content">
-                        <p class="detail_feed_txt">{{ tweet.content }}</p>
-                        {% if tw.tags.all %}
-                        {% for tag in tw.tags.all %}
-                        <a style="text-decoration: none" href="{% url 'tagged_object_list' tag.name %}">
-                            <span class="badge rounded-pill bg-success">
-                                {{ tag.name }}
-                            </span>
-                        </a>
-                        {% endfor %}
-                        -<a style="text-decoration: none" href="{% url 'tag_cloud' %}">TagCloud</a>
-                        {% endif %}
-                    </div>
-                    <div style=padding:10px;>
-                        <span style="font-size: small">{{tweet.created_at|timesince }}</span>
-                    </div>
-                </div>
 
+                <div class="detail_feed_content">
+                    <p class="detail_feed_txt">{{ tweet.content }}</p>
+                    {% if tw.tags.all %}
+                    {% for tag in tw.tags.all %}
+                    <a style="text-decoration: none" href="{% url 'tagged_object_list' tag.name %}">
+                        <span class="badge rounded-pill bg-success">
+                            {{ tag.name }}
+                        </span>
+                    </a>
+                    {% endfor %}
+                    -<a style="text-decoration: none" href="{% url 'tag_cloud' %}">TagCloud</a>
+                    {% endif %}
+                </div>
+                <div style=padding:10px;>
+                    <span style="font-size: small">{{tweet.created_at|timesince }}</span>
+                </div>
             </div>
+
             <div class="comment_list">
                 <p class="detail_feed_txt">
                     <hr>
-
                     {% for cm in comment %}
                     <div class="row">
                         <div class="col-md-12">
@@ -212,7 +233,7 @@
                                     {% if cm.author == user %}
                                     <div style="float: right">
                                         <a href="/tweet/comment/delete/{{ cm.id }}">
-                                            <span class="badge bg-danger">삭제</span>
+                                            <span class="material-symbols-outlined">delete</span>
                                         </a>
                                     </div>
                                     {% endif %}
@@ -228,15 +249,14 @@
                 <div class="comment_profile">
                     <div class="comment_img">
                         <div class="detail_profile_box">
-
                             <img class="detail_profile_img"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHPNYM5RQgA2F7BtpBQ-OrNFKDXVDUpypRuw&usqp=CAU">
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHPNYM5RQgA2F7BtpBQ-OrNFKDXVDUpypRuw&usqp=CAU">
                         </div>
                     </div>
                     <form class="input-group mb-3" action="/tweet/comment/{{ tweet.id }}" method="post">
                         {% csrf_token %}
                         <input type="text" class="form-control" id='comment' name='comment'
-                            placeholder="댓글을 작성 해 주세요" />
+                            placeholder="댓글을 남겨주세요" />
                         <button class="btn btn-outline-secondary" type="submit">작성</button>
                     </form>
                 </div>
