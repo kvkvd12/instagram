@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=0, maximum-scale=0, user-scalable=0" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <title>{% block title %}{% endblock %} | insta 클론코딩</title>
     <!-- Bootstrap CSS -->
@@ -43,7 +44,9 @@
             display: flex;
             justify-content: center;
             padding-top: 75px;
-            background-color: #FAFAFA;
+            background-color: white;
+            
+            position: sticky;
         }
 
         .icons a {
@@ -52,28 +55,34 @@
         }
 
         .left_body {
-
-            margin-right: 100px;
-            width: 500px;
+            
+            margin-right: 310px;
+            width: auto;
             height: 2000px;
             display: flex;
             flex-direction: column;
+            
         }
 
         .right_body {
             padding-top: 20px;
-            width: 300px;
+            max-width: 300px;
+            width: 80%;
             height: 1000px;
-            left: 72%;
-            position: fixed
+            right: 29%;
+            position: absolute;
+            overflow: hidden;
         }
-
+       
         .feed_box {
+            margin-top: 20px;
             background-color: white;
-            width: 480px;
-            margin: 10px;
+            max-width: 390px;
+            width: 95%;
+            margin-right: 40px;
             min-height: auto;
             padding-bottom: 10px;
+            
         }
 
         .feed_img {
@@ -265,13 +274,37 @@
         }
         .mt-3 {
             
+            
         }
+
+        <!-- 네비바 -->
+        .navbar{
+            background-color:white !important;
+            border: solid 1px gray;
+           }
+        .navbar-brand {
+            padding-left: 200px;
+        }
+
+        .navbar-nav {
+            padding-right: 90px;
+            width: 500px;
+            margin-left: -10px;
+        }
+        
+        .material-icons {
+            margin-left: -13px;
+            margin-right: -18px;
+        }
+        
+        
+        
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+    <nav class="navbar navbar-default navbar-expand-lg navbar-light bg-light">
+        <div class="container", style="width: 1700px;">
             <a class="navbar-brand" href="/">
                 <img style="height: 30px; object-fit: contain"
                     src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
@@ -315,4 +348,4 @@
     {% endblock postadd %}
 </body>
 
-</html>
+</html>````
