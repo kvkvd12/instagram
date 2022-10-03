@@ -14,7 +14,11 @@ class TweetModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+<<<<<<< Updated upstream
     image = models.ImageField(upload_to = "images/")
+=======
+    image = models.ImageField()
+>>>>>>> Stashed changes
     
     
 class TweetComment(models.Model):
@@ -27,6 +31,7 @@ class TweetComment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     
+
 
 
      

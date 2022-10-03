@@ -2,7 +2,7 @@ from re import T
 from urllib import request
 from django.shortcuts import render, redirect
 from .models import TweetModel
-from .models import TweetComment
+from .models  import TweetComment
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, TemplateView
 
@@ -28,7 +28,7 @@ def tweet (request):
         
     elif request.method == 'POST':
         user = request.user
-        content = request.POST.get('my-content','')
+        content = request.POST.get('my-content')
         tags = request.POST.get('tag','').split(',')
         
         image = request.FILES.get('image', '')

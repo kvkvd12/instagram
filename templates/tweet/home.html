@@ -97,6 +97,9 @@
             </div>
 
         </div>
+
+
+
         <!-- 왼쪽 컬럼-->
         <!-- 작성 된 글이 나오는 곳 -->
         <div class="left_body">
@@ -162,23 +165,29 @@
                         </span>
                     </a>
                     {% endfor %}
-                    -<a style="text-decoration: none" href="{% url 'tag_cloud' %}">TagCloud</a>
+                    -<a style="text-decoration: none" href="{% url 'tag_cloud' %}">Tag</a>
                     {% endif %}
                     
                 </div>
+                
                 <div class="feed_reply">
+                    {% if comment %}
                     <div class="feed_reply">
-                        <!-- {% for cm in comment %} -->
+                        
+                        {% for cm in comment %} 
                         <span class="feed_txt"> <b> {{ cm.author }} </b> {{ cm.comment }}</span>
-                        <!-- {% endfor %} -->
+                        {% endfor %}
                     </div>
+                    
                     <div class="blank">
                     </div>
                     <div class="input-group">
                         <div class="input-group-text" id="btnGroupAddon2">😃</div>
                         <input type="text" class="form-control" placeholder="댓글 달기.." aria-label="Input group example" aria-describedby="btnGroupAddon2">
                       </div>
+                      {% endif %}
                 </div>
+                
             </div>
             {% endfor %}
         </div>
@@ -215,3 +224,4 @@
 {% endfor %} -->
 
 {% endblock %}
+

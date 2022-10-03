@@ -167,7 +167,7 @@
                     </div>
                     {% if tweet.author == user %}
                     <div style="float: right">
-                        <a href="/tweet/edit/{{ tweet.id }}">
+                        <a href="/post-edit">
                             <span class="material-symbols-outlined">edit_square</span>
                         </a>
                     </div>
@@ -245,6 +245,7 @@
                     {% endfor %}
                 </p>
             </div>
+            
             <div class="comment_box">
                 <div class="comment_profile">
                     <div class="comment_img">
