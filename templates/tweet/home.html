@@ -102,6 +102,27 @@
         <div class="left_body">
             {% for tw in tweet %}
             <div class="border feed_box">
+                <div class="container1">
+
+                    <a class="navbar-brand1" href="/">    
+                        <div style="display: flex; align-items: center; ">
+                            <div class="big_profile_box">
+                                <img class="profileimage"
+                                    src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg">
+                            </div>
+                            <div class="name_content">
+                                <span class="feed_name_txtt"> {{ user.username }} </span>
+                                
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+
+                
+
+
                 <a href="/tweet/{{ tw.id }}">
                     <img class="feed_img "
                         src="https://mblogthumb-phinf.pstatic.net/MjAxNzA2MTFfMjc1/MDAxNDk3MTcyMDgyNzEw.ID5RyHWKvsVEW2NS9EQGyRYX7vUaXr7znQeuTrRRmdIg.gK7MD7VhNJPkV4_dueiWer2y-oH7NAAmEklF-6bbYyQg.JPEG.jejubyeol/%EC%97%AC%EB%A6%84%EC%97%90_%EC%A0%9C%EC%A3%BC%EB%8F%84_%EC%82%AC%EC%A7%84%EC%B0%8D%EA%B8%B0_%EC%A2%8B%EC%9D%80%EA%B3%B3.jpg?type=w800">
@@ -129,8 +150,8 @@
                 </div>
                 <div class="feed_content">
                     <p class="feed_txt"> <b> {{ user.username }} </b> {{ tw.content }}
-                    <div style="text-align: right">
-                        <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince}} 전</span>
+                    <div style="text-align: left">
+                        <span style="font-size: small">{{ tw.updated_at|timesince}} 전</span>
                     </div>
                     </p>
                     {% if tw.tags.all %}
@@ -143,9 +164,7 @@
                     {% endfor %}
                     -<a style="text-decoration: none" href="{% url 'tag_cloud' %}">TagCloud</a>
                     {% endif %}
-                    <div class="mb-2" style="display: flex; align-items: center; justify-content: space-between">
-                        <hr style="border:1px silver; width: 450px"> 
-                    </div>
+                    
                 </div>
                 <div class="feed_reply">
                     <div class="feed_reply">
@@ -153,6 +172,12 @@
                         <span class="feed_txt"> <b> {{ cm.author }} </b> {{ cm.comment }}</span>
                         <!-- {% endfor %} -->
                     </div>
+                    <div class="blank">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-text" id="btnGroupAddon2">😃</div>
+                        <input type="text" class="form-control" placeholder="댓글 달기.." aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                      </div>
                 </div>
             </div>
             {% endfor %}
