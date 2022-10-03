@@ -11,6 +11,7 @@
         display: flex;
         justify-content: center;
         background-color: #FAFAFA;
+        margin-top: 30px;
     }
 
     .detail_left_body {
@@ -24,17 +25,22 @@
     .detail_right_body {
         padding-top: 20px;
         width: 350px;
-        height: 1000px;
+        height: 100%;
         margin-right: 200px;
         left: 72%;
+        
     }
 
     .feed_detail {
         margin-top: 20px;
+        
     }
-
+    .detail_feed_box {
+        background-color: black;
+        height: 100px;
+    }
     .detail_feed_box_left {
-        background-color: white;
+        background-color: black;
         width: 700px;
         margin: 20px 0px 20px 0px;
         height: 480px;
@@ -44,13 +50,16 @@
     .detail_feed_box_right {
         background-color: white;
         width: 600px;
-        height: 520px;
+        
         padding-top: 10px;
+        height: 500px;
+        
     }
 
     .detail_feed_img {
         width: 100%;
         object-fit: contain;
+        height: 100%;
     }
 
     .detail_feed_content {
@@ -61,13 +70,27 @@
     .detail_feed_txt {
         font-size: 13px;
     }
-
+    .feed_detail {
+        padding-top: 10px;
+        border-top: 1px solid lightgray;
+        height: 100px;
+    }
     .detail_feed_name {
         padding-left: 10px;
         display: flex;
         align-items: center;
+        
     }
-
+    .comment_list{
+        padding-top: 50px;
+        height: 200000px;
+        width: 100%;
+    }
+    .comment_profile{
+        height: 10px;
+        margin-top: 65px;
+     
+    }
     .detail_feed_name_txt {
         font-size: 14px;
         padding: 0px 10px;
@@ -124,6 +147,14 @@
         font-size: 13px;
         margin-right: 50px;
     }
+    .imoticon {
+        width:100%;
+    }
+    .badge {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    
 </style>
 
 <div class="detail_main_body">
@@ -132,7 +163,7 @@
         <div class="border detail_feed_box">
             <div class="detail_feed_box_left">
                 <img class="detail_feed_img "
-                    src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg">
+                    src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" style="max-width: 100%; height: 100%;">
 
             </div>
         </div>
@@ -158,7 +189,6 @@
                     {% endif %}
                 </div>
             </div>
-            <hr style="border: 1px solid silver;">
             <div class="feed_detail">
                 <div class="detail_feed_name">
                     <div style="display: flex; align-items: center; ">
@@ -193,8 +223,6 @@
             </div>
             <div class="comment_list">
                 <p class="detail_feed_txt">
-                    <hr>
-
                     {% for cm in comment %}
                     <div class="row">
                         <div class="col-md-12">
@@ -220,19 +248,15 @@
                             </div>
                         </div>
                     </div>
-                    <hr>
                     {% endfor %}
                 </p>
+                
             </div>
             <div class="comment_box">
                 <div class="comment_profile">
                     <div class="comment_img">
-                        <div class="detail_profile_box">
-
-                            <img class="detail_profile_img"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHPNYM5RQgA2F7BtpBQ-OrNFKDXVDUpypRuw&usqp=CAU">
-                        </div>
-                    </div>
+                        <div class="input-group-text" id="btnGroupAddon2">😃</div>
+                     </div>
                     <form class="input-group mb-3" action="/tweet/comment/{{ tweet.id }}" method="post">
                         {% csrf_token %}
                         <input type="text" class="form-control" id='comment' name='comment'
@@ -241,6 +265,8 @@
                     </form>
                 </div>
             </div>
+            
+           
         </div>
     </div>
 </div>
