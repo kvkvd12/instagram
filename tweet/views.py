@@ -2,7 +2,7 @@ from re import T
 from urllib import request
 from django.shortcuts import render, redirect
 from .models import TweetModel
-from .models import TweetComment
+from .models  import TweetComment
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, TemplateView
 
@@ -28,14 +28,16 @@ def tweet (request):
         
     elif request.method == 'POST':
         user = request.user
-        content = request.POST.get('my-content','')
+        content = request.POST.get('my-content')
         tags = request.POST.get('tag','').split(',')
+        
+        image = request.FILES.get('image', '')
         
         if content == '':
             all_tweet = TweetModel.objects.all().order_by('-created_at')
             return render(request,'tweet/home.html',{'error':'글은 공백일 수 없습니다.','tweet':all_tweet})
         else:
-            my_tweet = TweetModel.objects.create(author=user, content=content)
+            my_tweet = TweetModel.objects.create(author=user, content=content, image=image)
             for tag in tags:
                 tag = tag.strip()
                 if tag != '':
@@ -94,7 +96,7 @@ class TaggedObjectLV(ListView):
         return context
     
 def post_add(request):
-    return render(request, 'tweet/post-add.html')
+    return render(request, 'tweet/post-add.html') 
 
 def post_edit(request):
     return render(request, 'tweet/post-edit.html')

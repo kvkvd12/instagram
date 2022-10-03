@@ -16,7 +16,7 @@
                     </div>
                     <div class="name_content">
                         <span class="feed_name_txt"> {{ user.username }} </span>
-                        <span class="name_content_txt"> JUNG HYUNJOO </span>
+                        <span class="name_content_txt"> {{ user.first_name }} </span>
                     </div>
                 </div>
             </div>
@@ -24,8 +24,8 @@
             <div class="recommend_box">
                 <span style="color: gray"> 회원님을 위한 추천</span>
                 {% if user.is_authenticated %}
-                <span style="font-size: 12px">
-                    <a href="/user">모두 보기</a>
+                <span style="font-size: 12px;">
+                    <a style="text-decoration: none; color: inherit;" href="/user">모두 보기</a>
                 </span>
                 {% endif %}
             </div>
@@ -55,7 +55,7 @@
                     <a class="link_txt">
                         팔로우
                     </a>
-                </div>
+                </div> 
                 <div class="feed_name" style="justify-content: space-between">
                     <div class="profile_box">
                         <img class="profile_img"
@@ -80,7 +80,7 @@
                     <a class="link_txt">
                         팔로우
                     </a>
-                </div>
+                </div> 
                 <div class="feed_name" style="justify-content: space-between">
                     <div class="profile_box">
                         <img class="profile_img"
@@ -97,6 +97,9 @@
             </div>
 
         </div>
+
+
+
         <!-- 왼쪽 컬럼-->
         <!-- 작성 된 글이 나오는 곳 -->
         <div class="left_body">
@@ -104,7 +107,7 @@
             <div class="border feed_box">
                 <div class="container1">
 
-                    <a class="navbar-brand1" href="/">    
+                    <a class="navbar-brand1" href="/" style="text-decoration: none; color: inherit;">    
                         <div style="display: flex; align-items: center; ">
                             <div class="big_profile_box">
                                 <img class="profileimage"
@@ -162,23 +165,29 @@
                         </span>
                     </a>
                     {% endfor %}
-                    -<a style="text-decoration: none" href="{% url 'tag_cloud' %}">TagCloud</a>
+                    -<a style="text-decoration: none" href="{% url 'tag_cloud' %}">Tag</a>
                     {% endif %}
                     
                 </div>
+                
                 <div class="feed_reply">
+                    {% if comment %}
                     <div class="feed_reply">
-                        <!-- {% for cm in comment %} -->
+                        
+                        {% for cm in comment %} 
                         <span class="feed_txt"> <b> {{ cm.author }} </b> {{ cm.comment }}</span>
-                        <!-- {% endfor %} -->
+                        {% endfor %}
                     </div>
+                    
                     <div class="blank">
                     </div>
                     <div class="input-group">
                         <div class="input-group-text" id="btnGroupAddon2">😃</div>
                         <input type="text" class="form-control" placeholder="댓글 달기.." aria-label="Input group example" aria-describedby="btnGroupAddon2">
                       </div>
+                      {% endif %}
                 </div>
+                
             </div>
             {% endfor %}
         </div>
@@ -215,3 +224,4 @@
 {% endfor %} -->
 
 {% endblock %}
+

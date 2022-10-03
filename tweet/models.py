@@ -14,11 +14,24 @@ class TweetModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+<<<<<<< Updated upstream
+    image = models.ImageField(upload_to = "images/")
+=======
+    image = models.ImageField()
+>>>>>>> Stashed changes
+    
+    
 class TweetComment(models.Model):
-    class Meta:
+    class Meta: 
         db_table = "comment"
     tweet = models.ForeignKey(TweetModel, on_delete=models.CASCADE)
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     comment = models.CharField(max_length=256)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    
+
+
+
+     
